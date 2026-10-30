@@ -1,31 +1,91 @@
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: #b3d5f8;
+    color: #ffffff;
+    padding-top: 20px;
+    background-image: url("img/Fons.png") ;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: -320px;
+}
+
+
+h1 {
+    color: #ffffff;
+    margin-top: 50px;
+    margin-left: 150px;
+}
+
+h2{
+    color: #ffffff;
+    font-size: 20px;
+}
+
+h4{
+    color: #ffffff;
+    font-size: 35px;
+}
+
+h5{
+    color: #ffffff;
+    font-size: 50px;
+    margin-right: 300px;
+    text-align: right;
+    font-family: Inter ;
+}
+
+
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-body {
-    font-family: system-ui, -apple-system, sans-serif;
-    background-color: #f1f5f9;
-    color: #334155;
-    padding: 20px;
+
+.panell {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 0px;
+    align-items:flex-start;
 }
 
-.container {
-    max-width: 500px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.cardTeam{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 30px;
+    margin-right: 30px;
+    margin-left: 20px;
 }
 
-h1 {
-    text-align: center;
-    color: #0f172a;
+.cardEquip{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 30px;
+    margin-left: 20px;
+    background: #b0b3ed;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.primer{
+    background-color: #628e2f;
+}
+
+.darrer{
+    background-color: #ae2626;
+}
+
+.niTanMal{
+        background-color: #a1c37a;
+
 }
 
 .card {
-    background: white;
+    background: #b0b3ed;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -66,8 +126,8 @@ select {
 button {
     width: 100%;
     padding: 10px;
-    background-color: #2563eb;
-    color: white;
+    background-color: #bfe0f6;
+    color: #98a2d5;
     border: none;
     border-radius: 6px;
     font-weight: bold;
@@ -75,7 +135,9 @@ button {
 }
 
 button:hover {
-    background-color: #1d4ed8;
+    background-color: #b7c7ed;
+    transform: translateY(-5px) scale(1.01);
+    transition-duration: 500ms;
 }
 
 .llista-grid {

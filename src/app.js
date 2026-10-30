@@ -1,69 +1,169 @@
 "use strict";
-// 2. Estat de l'aplicació (Array global)
-let llistaElements = [];
-// 3. Funció per llegir el formulari i afegir un nou element a l'array
+let club;
+let llistaClubs = [
+    {
+        "nom": "Recreativo de Huelga",
+        "pj": 20,
+        "golsF": 18,
+        "golsC": 35,
+        "punts": 21
+    },
+    {
+        "nom": "Borussia Donuts",
+        "pj": 22,
+        "golsF": 29,
+        "golsC": 15,
+        "punts": 37
+    },
+    {
+        "nom": "Vodka Juniors",
+        "pj": 22,
+        "golsF": 27,
+        "golsC": 13,
+        "punts": 36
+    },
+    {
+        "nom": "Bayern de los Caídos",
+        "pj": 22,
+        "golsF": 32,
+        "golsC": 16,
+        "punts": 48
+    },
+    {
+        "nom": "Manchester Piti",
+        "pj": 21,
+        "golsF": 39,
+        "golsC": 12,
+        "punts": 53
+    },
+    {
+        "nom": "Aston Birra",
+        "pj": 20,
+        "golsF": 20,
+        "golsC": 11,
+        "punts": 30
+    },
+    {
+        "nom": "Bebesiktas",
+        "pj": 22,
+        "golsF": 40,
+        "golsC": 19,
+        "punts": 43
+    },
+    {
+        "nom": "Cultural Mayonesa",
+        "pj": 21,
+        "golsF": 14,
+        "golsC": 21,
+        "punts": 19
+    },
+    {
+        "nom": "Payo Vallecano",
+        "pj": 19,
+        "golsF": 21,
+        "golsC": 14,
+        "punts": 28
+    },
+    {
+        "nom": "Tinder De Milan",
+        "pj": 19,
+        "golsF": 33,
+        "golsC": 16,
+        "punts": 42
+    },
+    {
+        "nom": "Birrarreal",
+        "pj": 20,
+        "golsF": 28,
+        "golsC": 16,
+        "punts": 40
+    },
+    {
+        "nom": "Nottingham Miedo",
+        "pj": 20,
+        "golsF": 30,
+        "golsC": 19,
+        "punts": 33
+    }
+];
+// 2. Funció per llegir el formulari i afegir un nou element a l'array
 function afegirElement() {
     const inputNom = document.getElementById('iNom');
-    const selectCategoria = document.getElementById('sCategoria');
-    const inputValor = document.getElementById('iValor');
-    const checkEstat = document.getElementById('cEstat');
-    // Validació bàsica
-    if (inputNom.value.trim() === '') {
-        alert('Escriu un nom abans d\'afegir!');
-        return;
-    }
-    // Crear l'objecte
-    const nouElement = {
+    const inputpj = document.getElementById('ipj');
+    const inputGolsF = document.getElementById('iGolsF');
+    const inputGolsC = document.getElementById('iGolsC');
+    const inputPunts = document.getElementById('iPunts');
+    club = {
         nom: inputNom.value,
-        categoria: selectCategoria.value,
-        valor: Number(inputValor.value),
-        estat: checkEstat.checked
+        pj: parseFloat(inputpj.value),
+        golsF: parseFloat(inputGolsF.value),
+        golsC: parseFloat(inputGolsC.value),
+        punts: parseFloat(inputPunts.value)
     };
-    // Afegir-lo a l'array
-    llistaElements.push(nouElement);
-    // Netejar el formulari
-    inputNom.value = '';
-    inputValor.value = '0';
-    checkEstat.checked = false;
+    llistaClubs.push(club);
+    console.table(llistaClubs);
+    if (llistaClubs.length == 16) {
+        // @ts-ignore
+        document.getElementById("btnAfegir").hidden = true;
+    }
+    llistaClubs.sort((a, b) => b.punts - a.punts);
+    console.log(inputNom, inputpj, inputGolsC, inputGolsF, inputPunts);
     // Actualitzar la pantalla
-    actualitzarUI();
-}
-// 4. Funció per esborrar un element per la seva posició de l'array
-function esborrarElement(index) {
-    llistaElements.splice(index, 1);
     actualitzarUI();
 }
 // 5. Funció per dibuixar l'array al DOM
 function actualitzarUI() {
-    const contenidor = document.getElementById('llistaContenidor');
-    const totalSpan = document.getElementById('totalElements');
-    // Netejem el contingut anterior
-    contenidor.innerHTML = '';
-    // Actualitzem el comptador total
-    totalSpan.innerText = llistaElements.length.toString();
-    // Recorrem l'array i creem els elements HTML
-    llistaElements.forEach((element, index) => {
-        const itemDiv = document.createElement('div');
-        itemDiv.className = 'item-card';
-        itemDiv.innerHTML = `
-      <div class="item-info">
-        <strong>${element.nom}</strong> [${element.categoria}]
-        <p>Valor: ${element.valor} | ${element.estat ? '✅ Actiu' : '❌ Inactiu'}</p>
-      </div>
-    `;
-        // Botó per eliminar l'element
-        const btnEliminar = document.createElement('button');
-        btnEliminar.className = 'btn-esborrar';
-        btnEliminar.innerText = 'Eliminar';
-        btnEliminar.onclick = () => esborrarElement(index);
-        itemDiv.appendChild(btnEliminar);
-        contenidor.appendChild(itemDiv);
-    });
+    const Clubs = document.getElementById('contenidorClubs');
+    let html = '';
+    for (let i = 0; i < llistaClubs.length; i++) {
+        if (i == 0) {
+            html += '<div class=\"cardEquip primer\">';
+        }
+        else if (i == 1 || i == 2) {
+            html += '<div class=\"cardEquip niTanMal\">';
+        }
+        else if (i == 11) {
+            html += '<div class=\"cardEquip darrer\">';
+        }
+        else {
+            html += '<div class=\"cardEquip\">';
+        }
+        html += '<h2>' + llistaClubs[i].nom + '</h2>';
+        html += '<h2>' + llistaClubs[i].pj + '</h2>';
+        let gols = llistaClubs[i].golsF - llistaClubs[i].golsC;
+        html += '<h2>' + gols + '</h2>';
+        html += '<h2>' + llistaClubs[i].punts + '</h2>';
+        html += '</div>';
+    }
+    Clubs.innerHTML = html;
 }
 // 6. Assegurar que el DOM està carregat abans d'assignar esdeveniments
 document.addEventListener('DOMContentLoaded', () => {
     const btnAfegir = document.getElementById('btnAfegir');
     btnAfegir === null || btnAfegir === void 0 ? void 0 : btnAfegir.addEventListener('click', afegirElement);
-    // Renderitzat inicial
-    actualitzarUI();
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const btnOrdenarPj = document.getElementById('btnOrdenarPj');
+    btnOrdenarPj === null || btnOrdenarPj === void 0 ? void 0 : btnOrdenarPj.addEventListener('click', ordenarPj);
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const btnOrdenarGols = document.getElementById('btnOrdenarGols');
+    btnOrdenarGols === null || btnOrdenarGols === void 0 ? void 0 : btnOrdenarGols.addEventListener('click', ordenarGols);
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const btnOrdenarPunts = document.getElementById('btnOrdenarPunts');
+    btnOrdenarPunts === null || btnOrdenarPunts === void 0 ? void 0 : btnOrdenarPunts.addEventListener('click', ordenarPts);
+});
+function ordenarPj() {
+    llistaClubs.sort((a, b) => b.pj - a.pj);
+    actualitzarUI();
+}
+function ordenarGols() {
+    llistaClubs.sort((a, b) => (b.golsF - b.golsC) - (a.golsF - a.golsC));
+    actualitzarUI();
+}
+function ordenarPts() {
+    llistaClubs.sort((a, b) => b.punts - a.punts);
+    actualitzarUI();
+}
+actualitzarUI();

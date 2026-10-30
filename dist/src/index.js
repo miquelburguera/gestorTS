@@ -1,12 +1,13 @@
 "use strict";
 // 2. Estat de l'aplicació (Array global)
 let llistaElements = [];
+console.log('hola')
 // 3. Funció per llegir el formulari i afegir un nou element a l'array
 function afegirElement() {
     const inputNom = document.getElementById('iNom');
-    const selectCategoria = document.getElementById('sCategoria');
-    const inputValor = document.getElementById('iValor');
-    const checkEstat = document.getElementById('cEstat');
+    const inputGolsF = document.getElementById('iGolsF');
+    const inputGolsC = document.getElementById('iGolsC');
+    const inputPunts = document.getElementById('iPunts');
     // Validació bàsica
     if (inputNom.value.trim() === '') {
         alert('Escriu un nom abans d\'afegir!');
@@ -15,16 +16,17 @@ function afegirElement() {
     // Crear l'objecte
     const nouElement = {
         nom: inputNom.value,
-        categoria: selectCategoria.value,
-        valor: Number(inputValor.value),
-        estat: checkEstat.checked
+        golsF: inputGolsF.value
+        golsC: inputGolsC.value
+        punts: inputPunts.value
     };
     // Afegir-lo a l'array
     llistaElements.push(nouElement);
     // Netejar el formulari
     inputNom.value = '';
-    inputValor.value = '0';
-    checkEstat.checked = false;
+    inputGolsF.value = '0';
+    inputGolsC.value = '0';
+    inputPunts.value = '0';
     // Actualitzar la pantalla
     actualitzarUI();
 }

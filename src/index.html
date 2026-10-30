@@ -5,43 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestor de la Pràctica</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
+
 </head>
 <body>
-<div class="container">
-    <h1>Gestor d'Elements</h1>
+<h5>SES SALINES CUP</h5>
+<h1>Gestor d'Elements</h1>
+
+<div class="panell">
 
     <!-- Formulari d'entrada de dades -->
     <div class="card">
-        <h2>Afegir Nou Element</h2>
 
         <div class="field">
-            <label for="iNom">Nom / Títol:</label>
+            <label for="iNom"><h2>Nom del club:</h2></label>
             <input type="text" id="iNom" placeholder="Escriu un nom...">
         </div>
 
         <div class="field">
-            <label for="sCategoria">Categoria:</label>
-            <select id="sCategoria">
-                <option value="Opció A">Opció A</option>
-                <option value="Opció B">Opció B</option>
-                <option value="Opció C">Opció C</option>
-            </select>
+            <label for="ipj"><h2>Partits Jugats</h2></label>
+            <input type="number" id="ipj" value="0">
         </div>
 
         <div class="field">
-            <label for="iValor">Valor / Preu / Punts:</label>
-            <input type="number" id="iValor" value="0">
+            <label for="iGolsF"><h2>Gols encaixats:</h2></label>
+            <input type="number" id="iGolsF" value="0">
         </div>
 
-        <div class="field-checkbox">
-            <label>
-                <input type="checkbox" id="cEstat"> Actiu / Completat
-            </label>
+        <div class="field">
+            <label for="iGolsC"><h2>Gols rebuts:</h2></label>
+            <input type="number" id="iGolsC" value="0">
         </div>
 
-        <button id="btnAfegir">Afegir a la Llista</button>
+
+
+        <div class="field">
+            <label for="iPunts"><h2>Punts:</h2></label>
+            <input type="number" id="iPunts" value="0">
+        </div>
+        <button id="btnAfegir">Afegir a la Classificació</button>
+    </div>
+    <div >
+
+    <div class="cardTeam">
+        <h4>Club</h4>
+        <h4 id="btnOrdenarPj">P.Jugats</h4>
+        <h4 id="btnOrdenarGols">Dif.Gols</h4>
+        <h4 id="btnOrdenarPunts">Pts</h4>
     </div>
 
+
+<div id="contenidorClubs">
+
+</div>
+
+</div>
 </div>
 
 <script src="app.js"></script>

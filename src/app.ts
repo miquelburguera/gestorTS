@@ -118,11 +118,12 @@ function afegirElement(): void {
 
     console.table(llistaClubs);
 
+    //En tenir 16 equyips amagar els botons
     if(llistaClubs.length == 16){
         // @ts-ignore
         document.getElementById("btnAfegir").hidden = true;
     }
-
+    //Ordenar-ho per punts desde un principi
     llistaClubs.sort((a, b) => b.punts - a.punts);
 
     console.log(inputNom, inputpj, inputGolsC,inputGolsF, inputPunts);
@@ -135,6 +136,7 @@ function afegirElement(): void {
 function actualitzarUI(): void {
     const Clubs = document.getElementById('contenidorClubs') as HTMLElement;
     let html: string='';
+    //Pintar els equips depenent la seva posició
     for(let i=0; i < llistaClubs.length; i++){
         if(i==0){
         html += '<div class=\"cardEquip primer\">'
@@ -176,16 +178,17 @@ document.addEventListener('DOMContentLoaded', () => {
     btnOrdenarPunts?.addEventListener('click', ordenarPts);
 });
 
-
+//Ordenar la depenent dels partits jugats classificació clicant el text
 function ordenarPj(){
     llistaClubs.sort((a, b) => b.pj - a.pj);
     actualitzarUI();
 }
+//Ordenar la depenent dels gols classificació clicant el text
 function ordenarGols(){
     llistaClubs.sort((a, b) => (b.golsF-b.golsC) - (a.golsF- a.golsC));
     actualitzarUI()
 }
-
+//Ordenar la depenent dels punts classificació clicant el text
 function ordenarPts(){
     llistaClubs.sort((a, b) => b.punts - a.punts);
     actualitzarUI();
